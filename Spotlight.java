@@ -5,7 +5,7 @@ public class Spotlight extends Light {
 	private Vector direction;
 	
 	public Spotlight(Color color, double intensity, Vector direction) throws IllegalArgumentException {
-		this(color, intensity, direction);
+		this("", color, intensity, direction);
 	}
 	
 	public Spotlight(String name, Color color, double intensity, Vector direction) throws IllegalArgumentException {

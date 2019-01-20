@@ -11,7 +11,7 @@ public class Lamp extends Light {
 	}
 	
 	public Lamp(Color color, double intensity, double[] location, double radius) throws IllegalArgumentException {
-		this("", color, intensity, location);
+		this("", color, intensity, location, radius);
 	}
 	
 	public Lamp(String name, Color color, double intensity, double[] location, double radius) throws IllegalArgumentException {
