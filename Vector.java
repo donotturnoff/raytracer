@@ -1,16 +1,10 @@
+import java.util.Arrays;
+
 public class Vector {
 	
 	private double[] array;
 	
-	public Vector(double[] array) {
-		this.array = array;
-	}
-	
 	public Vector(double... array) {
-		this.array = array;
-	}
-	
-	public void setArray(double[] array) {
 		this.array = array;
 	}
 	
@@ -34,6 +28,15 @@ public class Vector {
 		return array.length;
 	}
 	
+	public boolean isZero() {
+		for (double component: array) {
+			if (component != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public boolean equals(Vector comparator) {
 		double[] comparatorArray = comparator.getArray();
 		if (array.length == comparatorArray.length) {
@@ -53,12 +56,21 @@ public class Vector {
 	}
 	
 	public boolean parallel(Vector comparator) {
-		if (array.length == comparatorArray.length &&  array.length > 0) {
-			double scale = comparatorArray[0]/array[0];
-			return array.product(scale).equals(comparator);
-		} else {
-			return false;
+		if (isZero() || comparator.isZero()) {
+			return true;
 		}
+		
+		double[] comparatorArray = comparator.getArray();
+		if (array.length == comparatorArray.length && array.length > 0) {
+			for (int i = 0; i < array.length; i++) {
+				if (array[i] != 0) {
+					double scale = comparatorArray[i]/array[i];
+					return product(scale).equals(comparator);
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	public boolean antiparallel(Vector comparator) {
@@ -156,5 +168,9 @@ public class Vector {
 	
 	public double angle(Vector operand) {
 		return Math.acos(dot(operand)/(magnitude()*operand.magnitude()));
+	}
+	
+	public String toString() {
+		return Arrays.toString(array);
 	}
 }
