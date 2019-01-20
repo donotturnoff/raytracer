@@ -3,11 +3,11 @@ public class Material {
 	private String name;
 	private SurfaceMap decorationMap, reflectionMap, specularMap, bumpMap, refractionMap;
 	
-	public Material(SurfaceMap decorationMap, reflectionMap, specularMap, bumpMap, refractionMap) {
+	public Material(SurfaceMap decorationMap, SurfaceMap reflectionMap, SurfaceMap specularMap, SurfaceMap bumpMap, SurfaceMap refractionMap) {
 		this("", decorationMap, reflectionMap, specularMap, bumpMap, refractionMap);
 	}
 	
-	public Material(String name, SurfaceMap decorationMap, reflectionMap, specularMap, bumpMap, refractionMap) {
+	public Material(String name, SurfaceMap decorationMap, SurfaceMap reflectionMap, SurfaceMap specularMap, SurfaceMap bumpMap, SurfaceMap refractionMap) {
 		this.name = name;
 		this.decorationMap = decorationMap;
 		this.reflectionMap = reflectionMap;
