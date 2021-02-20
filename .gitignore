@@ -1,0 +1,7 @@
+*.class
+assets
+/design/
+/misc/
+/future/
+/.idea/
+/raytracer.iml

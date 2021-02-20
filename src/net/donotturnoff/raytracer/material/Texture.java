@@ -1,4 +1,5 @@
-import java.awt.Color;
+package net.donotturnoff.raytracer.material;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import javax.imageio.ImageIO;

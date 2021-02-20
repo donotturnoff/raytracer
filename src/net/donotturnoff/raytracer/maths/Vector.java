@@ -1,4 +1,7 @@
+package net.donotturnoff.raytracer.maths;
+
 import java.util.Arrays;
+import java.awt.Color;
 
 public class Vector {
 	
@@ -8,8 +11,43 @@ public class Vector {
 		this.array = array;
 	}
 	
+	public Vector(Matrix matrix) {
+		setArray(matrix);
+	}
+	
+	public Vector(Color color) {
+		setArray(color);
+	}
+	
+	public Vector(Color color, boolean hasAlpha) {
+		setArray(color, true);
+	}
+	
 	public void setArray(double... array) {
 		this.array = array;
+	}
+	
+	public void setArray(Matrix matrix) {
+		array = new double[matrix.rows()];
+		for (int i = 0; i < matrix.rows(); i++) {
+			array[i] = matrix.getElement(i, 0);
+		}
+	}
+	
+	public void setArray(Color color) {
+		setArray(color, false);
+	}
+	
+	public void setArray(Color color, boolean hasAlpha) {
+		if (hasAlpha) {
+			array = new double[4];
+			array[3] = color.getAlpha();
+		} else {
+			array = new double[3];
+		}
+		array[0] = color.getRed();
+		array[1] = color.getGreen();
+		array[2] = color.getBlue();
 	}
 	
 	public void setComponent(int index, double component) throws ArrayIndexOutOfBoundsException {
@@ -170,7 +208,17 @@ public class Vector {
 		return Math.acos(dot(operand)/(magnitude()*operand.magnitude()));
 	}
 	
+	public Color toColor() throws UnsupportedOperationException {
+		if (array.length == 3) {
+			return new Color((int) array[0], (int) array[1], (int) array[2]);
+		} else if (array.length == 4) {
+			return new Color((int) array[0], (int) array[1], (int) array[2], (int) array[3]);
+		} else {
+			throw new UnsupportedOperationException("Cannot cast vector with " + array.length + " components to color");
+		}
+	}
+	
 	public String toString() {
-		return Arrays.toString(array);
+		return "Vector" + Arrays.toString(array);
 	}
 }

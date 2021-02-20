@@ -1,15 +1,20 @@
+package net.donotturnoff.raytracer.light;
+
+import net.donotturnoff.raytracer.light.Light;
+import net.donotturnoff.raytracer.maths.Vector;
+
 import java.awt.Color;
 
 public class Spotlight extends Light {
 	
 	private Vector direction;
 	
-	public Spotlight(Color color, double intensity, Vector direction) throws IllegalArgumentException {
-		this("", color, intensity, direction);
+	public Spotlight(Color color, Vector direction) throws IllegalArgumentException {
+		this("", color, direction);
 	}
 	
-	public Spotlight(String name, Color color, double intensity, Vector direction) throws IllegalArgumentException {
-		super(name, color, intensity);
+	public Spotlight(String name, Color color, Vector direction) throws IllegalArgumentException {
+		super(name, color);
 		
 		if (direction.components() == 3) {
 			if (!direction.isZero()) {
@@ -33,8 +38,6 @@ public class Spotlight extends Light {
 		infoBuilder.append(name);
 		infoBuilder.append("\",color=");
 		infoBuilder.append(color);
-		infoBuilder.append(",intensity=");
-		infoBuilder.append(intensity);
 		infoBuilder.append(",direction=");
 		infoBuilder.append(direction);
 		infoBuilder.append("]");

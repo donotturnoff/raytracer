@@ -1,7 +1,25 @@
+package net.donotturnoff.raytracer.material;
+
 import java.awt.Color;
 
 public class BlockColor extends SurfaceMap {
 	private Color color;
+	
+	public BlockColor(int value) throws IllegalArgumentException {
+		this(1, 1, new Color(value, value, value));
+	}
+	
+	public BlockColor(int r, int g, int b) throws IllegalArgumentException {
+		this(1, 1, new Color(r, g, b));
+	}
+	
+	public BlockColor(Color color) {
+		this(1, 1, color);
+	}
+	
+	public BlockColor(int width, int height, int r, int g, int b) throws IllegalArgumentException {
+		this(width, height, new Color(r, g, b));
+	}
 	
 	public BlockColor(int width, int height, Color color) {
 		super(width, height);

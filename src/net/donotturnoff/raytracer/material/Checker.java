@@ -1,3 +1,5 @@
+package net.donotturnoff.raytracer.material;
+
 import java.awt.Color;
 
 public class Checker extends SurfaceMap {
